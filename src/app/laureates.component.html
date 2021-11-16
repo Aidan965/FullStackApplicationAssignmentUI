@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div *ngFor = "let laureate of laureates_list">
+                <div class="card text-white bg-primary mb-3" 
+                            [routerLink]="['/laureates', laureate._id]" 
+                            style="cursor: pointer; width: 50rem; margin: auto;">
+                    <div class="card-header">
+                        {{ laureate.firstname }} {{ laureate.surname }}
+                    </div>
+                    <div class="card-body">
+                        This laureate was born in {{ laureate.bornCity }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
