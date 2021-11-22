@@ -10,10 +10,9 @@ import { ActivatedRoute } from "@angular/router";
 export class LaureateComponent {
     constructor(private webService: WebService, private route: ActivatedRoute) {}
 
-    async ngOnInit() {
-        var response = await this.webService.getLaureate(this.route.snapshot.params['id']);
-        this.laureate = response;
+    ngOnInit() {
+        this.laureates_list = this.webService.getLaureate(this.route.snapshot.params['id']);
     }
 
-    laureate: any;
+    laureates_list: any = [];
 }

@@ -1,3 +1,4 @@
+import { i18nMetaToJSDoc } from "@angular/compiler/src/render3/view/i18n/meta";
 import { Component } from "@angular/core";
 import { WebService } from "./web.service";
 
@@ -7,12 +8,29 @@ import { WebService } from "./web.service";
     styleUrls: ['./laureates.component.css']
 })
 export class LaureatesComponent {
-    constructor(private webService: WebService) {}
+    constructor(public webService: WebService) {}
 
-    async ngOnInit() {
-        var response = await this.webService.getLaureates();
-        this.laureates_list = response;
+    ngOnInit() {
+        if (sessionStorage['page']) {
+            this.page = Number(sessionStorage['page']);
+        }
+        this.laureates_list = this.webService.getLaureates(this.page);       
     }
 
-    laureates_list: any;
+    previousPage() {
+        if (this.page > 1) {
+            this.page = this.page - 1;
+            sessionStorage['page'] = this.page;
+            this.laureates_list = this.webService.getLaureates(this.page);
+        }
+    }
+
+    nextPage() {
+        this.page = this.page + 1;
+        sessionStorage['page'] = this.page;
+        this.laureates_list = this.webService.getLaureates(this.page);
+    }
+
+    laureates_list: any = [];
+    page: number = 1;
 }

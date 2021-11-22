@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <div *ngFor = "let laureate of laureates_list">
+            <div *ngFor = "let laureate of laureates_list | async">
                 <div class="card text-white bg-primary mb-3" 
                             [routerLink]="['/laureates', laureate._id]" 
                             style="cursor: pointer; width: 50rem; margin: auto;">
@@ -13,6 +13,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-primary" (click)="previousPage()">Previous</button>
+        </div>
+        <div class="col-sm-6 text-end">
+            <button class="btn btn-primary" (click)="nextPage()">Next</button>
         </div>
     </div>
 </div>
