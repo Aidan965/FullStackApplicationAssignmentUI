@@ -7,7 +7,35 @@
                         {{ laureate.firstname }} {{ laureate.surname }} 
                     </div>
                     <div class="card-body">
-                        This laureate was born in {{ laureate.bornCity }}
+                        Born {{ laureate.born.substr(0, 10) | date }} in {{ laureate.bornCity }}, {{ laureate.bornCountry }}. <br>
+                        Died {{ laureate.died.substr(0, 10) | date }} in {{ laureate.diedCity}}, {{ laureate.diedCountry }}.
+                    </div>
+                </div>
+                <div class="card bg-light mb-3" 
+                    style="width: 30rem; margin: auto"
+                    *ngFor = "let prize of laureate.prizes">
+                    <div class="card-header">
+                        Was awarded the Nobel prize in {{ prize.category }} in {{ prize.year }}
+                    </div>
+                    <div class="card-body" *ngFor = "let affiliation of prize.affiliations">
+                        {{ prize.motivation }}
+                        <hr>
+                        <p> Affiliated with: </p>
+                        <p>   <strong> {{ affiliation.city }} </strong> </p>
+                        <p>    <strong> {{ affiliation.country }} </strong> </p>
+                        <p>    <strong> {{ affiliation.name }} </strong> </p>                       
+                    </div>
+                    <div class="card-footer" *ngIf=" prize.share == 1">
+                        <p>Awarded full prize</p>
+                    </div>
+                    <div class="card-footer" *ngIf=" prize.share == 2">
+                        <p>Awarded half the prize</p>
+                    </div>
+                    <div class="card-footer" *ngIf=" prize.share == 3">
+                        <p>Awarded a third of the prize</p>
+                    </div>
+                    <div class="card-footer" *ngIf=" prize.share == 4">
+                        <p>Awarded a quarter of the prize</p>
                     </div>
                 </div>
             </div>
