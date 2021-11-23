@@ -15,7 +15,11 @@ export class LaureateComponent {
     constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder) {}
 
     onSubmit() {
-        console.log(this.laureateForm.valid);
+        this.webService.postPrize(this.laureateForm.value)
+            .subscribe((response: any) => {
+                this.laureateForm.reset();
+                this.laureates_list = this.webService.getLaureate(this.route.snapshot.params["id"]);
+            });      
     }
 
     isUntouched() {
