@@ -42,3 +42,49 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Add Nobel prize to laureate</h2>
+            <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="text" id="year" name="year" class="form-control" formControlName="year">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" formControlName="category">
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Economics">Economics</option>
+                        <option value="Literature">Literature</option>
+                        <option value="Peace">Peace</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Physiology">Physiology or Medicine</option>                       
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="motivation">Enter motivation for awarding prize</label>
+                    <textarea id="motivation" 
+                            rows="3" 
+                            name="motivation" 
+                            class="form-control" 
+                            formControlName="motivation"
+                            [ngClass]="{ 'error' : isInvalid('motivation')}">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="share">Share (Share of the Nobel prize)</label>
+                    <select id="share" name="share" class="form-control" formControlName="share">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <span *ngIf="isIncomplete()">You must complete all fields</span>
+                <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
