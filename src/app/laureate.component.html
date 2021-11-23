@@ -17,8 +17,10 @@
                     <div class="card-header">
                         Was awarded the Nobel prize in {{ prize.category }} in {{ prize.year }}
                     </div>
-                    <div class="card-body" *ngFor = "let affiliation of prize.affiliations">
+                    <div class="card-body">
                         {{ prize.motivation }}
+                    </div>                   
+                    <div class="card-body" *ngFor = "let affiliation of prize.affiliations">                        
                         <hr>
                         <p> Affiliated with: </p>
                         <p>   <strong> {{ affiliation.city }} </strong> </p>
