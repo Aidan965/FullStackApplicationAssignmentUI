@@ -8,6 +8,8 @@ import { LaureateComponent } from './laureate.component';
 import { WebService } from './web.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from '@auth0/auth0-angular';
+import { NavComponent } from './nav.component';
 
 var routes: any = [
   {
@@ -29,13 +31,18 @@ var routes: any = [
     AppComponent,
     HomeComponent,
     LaureatesComponent,
-    LaureateComponent
+    LaureateComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule.forRoot( {
+      domain: 'dev-7smlvzj3.eu.auth0.com',
+      clientId: 'av1fHbzphSYq0NKXVjVBsuWHpaESogkg'
+    })
   ],
   providers: [WebService],
   bootstrap: [AppComponent]

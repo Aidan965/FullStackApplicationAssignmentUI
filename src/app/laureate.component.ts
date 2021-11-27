@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { WebService } from "./web.service";
 import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, Validators } from "@angular/forms";
+import { AuthService } from "@auth0/auth0-angular";
 
 @Component({
     selector: 'laureate',
@@ -12,7 +13,7 @@ export class LaureateComponent {
 
     laureateForm: any;
 
-    constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder) {}
+    constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder, public authService: AuthService) {}
 
     onSubmit() {
         this.webService.postPrize(this.laureateForm.value)
