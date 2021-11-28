@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavComponent } from './nav.component';
+import { PrizesComponent } from './prizes.component';
+import { PrizeComponent } from './prize.component';
 
 var routes: any = [
   {
@@ -23,6 +25,14 @@ var routes: any = [
   {
     path: 'laureates/:id',
     component: LaureateComponent
+  },
+  {
+    path: 'prizes',
+    component: PrizesComponent
+  },
+  {
+    path: 'prizes/:id',
+    component: PrizeComponent
   }
 ];
 
@@ -32,7 +42,9 @@ var routes: any = [
     HomeComponent,
     LaureatesComponent,
     LaureateComponent,
-    NavComponent
+    NavComponent,
+    PrizesComponent,
+    PrizeComponent
   ],
   imports: [
     BrowserModule,

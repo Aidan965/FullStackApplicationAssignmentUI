@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 70px;">
+    <div class="row">
+        <div *ngFor = "let prize of prizes_list | async">
+            <div class="col-sm-3">
+                <div class="card-header">
+                    Nobel {{ prize.category }} prize winner in {{ prize.year }}
+                </div>
+                <div class="card text-white bg-primary mb-3">
+                    
+                    <img src="{{ prize.profileImage }}" height="300" class="card-img-top"/>
+                    <div *ngFor = "let laureate of prize.laureates">
+                        
+                        <div class="card-body">
+                            {{ laureate.firstname }} {{ laureate.surname }} 
+                        </div>
+                                    
+                        <div class="card bg-light mb-3" style="width: 30rem; margin: auto">
+                            
+                            <div class="card-body">
+                                {{ laureate.motivation }}
+                            </div>                                 
+                            <div class="card-footer" *ngIf=" laureate.share == 1">
+                                <p>Awarded full prize</p>
+                            </div>
+                            <div class="card-footer" *ngIf=" laureate.share == 2">
+                                <p>Awarded half the prize</p>
+                            </div>
+                            <div class="card-footer" *ngIf=" laureate.share == 3">
+                                <p>Awarded a third of the prize</p>
+                            </div>
+                            <div class="card-footer" *ngIf=" laureate.share == 4">
+                                <p>Awarded a quarter of the prize</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
