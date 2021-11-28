@@ -12,6 +12,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { NavComponent } from './nav.component';
 import { PrizesComponent } from './prizes.component';
 import { PrizeComponent } from './prize.component';
+import { CategoryComponent } from './category.component';
 
 var routes: any = [
   {
@@ -33,6 +34,10 @@ var routes: any = [
   {
     path: 'prizes/:id',
     component: PrizeComponent
+  },
+  {
+    path: 'prizes/category/:category',
+    component: CategoryComponent
   }
 ];
 
@@ -44,7 +49,8 @@ var routes: any = [
     LaureateComponent,
     NavComponent,
     PrizesComponent,
-    PrizeComponent
+    PrizeComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
