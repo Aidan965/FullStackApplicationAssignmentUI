@@ -30,6 +30,10 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/prizes/category/" + category + "?pn=" + page);
     }
 
+    getCategoryAndYear(category: string, year: number) {
+        return this.http.get("http://localhost:5000/api/v1/prizes/" + category + "/" + year);
+    }
+
     postPrize(prize: any) {
         console.log(prize);
         console.log(this.laureateID);

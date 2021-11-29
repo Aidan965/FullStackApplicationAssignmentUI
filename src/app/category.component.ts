@@ -31,6 +31,19 @@ export class CategoryComponent {
         this.prizes_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
     }
 
+    onSubmit() {
+
+    }
+
+    isIncomplete() {
+        return this.isInvalid('motivation');
+    }
+
+    isInvalid(control: any) {
+        return this.categoryForm.controls[control].invalid && this.categoryForm.controls[control].touched;           
+    }
+
     prizes_list: any = [];
     page: number = 1;
+    categoryForm: any;
 }
