@@ -8,6 +8,7 @@ export class WebService {
     laureates_list: any;
     private laureateID: any;
     prizes_list: any;
+    highly_decorated_list: any;
 
     getLaureates(page: number) {
         return this.http.get("http://localhost:5000/api/v1/laureates?pn=" + page);
@@ -32,6 +33,10 @@ export class WebService {
 
     getCategoryAndYear(category: string, year: number) {
         return this.http.get("http://localhost:5000/api/v1/prizes/" + category + "/" + year);
+    }
+
+    getMostDecorated() {
+        return this.http.get("http://localhost:5000/api/v1/laureates/highly_decorated");
     }
 
     postPrize(prize: any) {

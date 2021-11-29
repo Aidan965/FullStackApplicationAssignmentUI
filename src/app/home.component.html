@@ -1,4 +1,10 @@
 <div class="container" style="margin-top: 70px;">
+
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h1>The Nobel Prize</h1>
+        <p>"For the greatest benefit to humankind" - Alfred Nobel</p> 
+      </div>
+
     <div class="row">
         <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -18,22 +24,18 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>   
-        <!-- <h2>Latest events from the Nobel committee</h2>
-        <div class="col-sm-12">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z8dMlxiTwUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        
-        </div> -->
     </div>
 
     <div class="row">
         <div *ngFor = "let prize of laureates_list | async">
-            <div class="col-sm-3">
-                
-                <div class="card-header">
-                    Nobel {{ prize.category }} prize winner in {{ prize.year }}
-                </div>
-                <img src="{{ prize.profileImage }}" height="300" class="card-img-top"/>
+            <div class="col-sm-3">       
                 <div class="card text-white bg-primary mb-3">                  
                     <div *ngFor = "let laureate of prize.laureates">
+                        <div class="card-header">
+                            Nobel {{ prize.category }} prize winner in {{ prize.year }}
+                        </div>
+
+                        <img src="{{ prize.profileImage }}" height="300" class="card-img-top"/>
                         
                         <div class="card-body">
                             {{ laureate.firstname }} {{ laureate.surname }} 
@@ -62,6 +64,27 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<div class="container">
+    <h2>Highly decorated people and organisations</h2>
+    
+        <div *ngFor = "let laureate of highly_decorated_list | async">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
+                    <div class="card text-white bg-primary mb-3" 
+                                [routerLink]="['/laureates', laureate._id]" 
+                                style="cursor: pointer; width: 50rem; margin: auto;">
+                        <div class="card-header">
+                            {{ laureate.firstname }} {{ laureate.surname }}
+                        </div>
+                        <div class="card-body">
+                            This laureate was born in {{ laureate.bornCity }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>

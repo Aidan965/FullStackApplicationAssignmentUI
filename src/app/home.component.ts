@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { AuthService } from "@auth0/auth0-angular";
 import { WebService } from "./web.service";
 import { ActivatedRoute } from "@angular/router";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'home',
@@ -19,7 +19,13 @@ export class HomeComponent {
         })
 
         this.laureates_list = this.webService.getCategoryAndYear(this.categoryForm.value.category, this.categoryForm.value.year);
+        
         // Get random Nobel laureate and display on homescreen
+
+
+        // Get most decorated 
+        this.highly_decorated_list = this.webService.getMostDecorated();
+        console.log(this.highly_decorated_list);
     }
 
     onSubmit() {        
@@ -31,4 +37,5 @@ export class HomeComponent {
 
     categoryForm: any;
     laureates_list: any = []; 
+    highly_decorated_list: any = [];
 }
