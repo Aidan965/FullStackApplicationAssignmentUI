@@ -1,0 +1,16 @@
+<table class="table" style="margin-top: 70px;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">University</th>
+        <th scope="col">Nobel laureates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let university of universities_list | async; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><a href="/laureates/universities/{{ university[0] }}"> {{ university[0] }} </a></td>
+        <td>{{ university[1] }}</td>
+      </tr>
+    </tbody>
+</table>

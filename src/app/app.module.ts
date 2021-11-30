@@ -13,6 +13,8 @@ import { NavComponent } from './nav.component';
 import { PrizesComponent } from './prizes.component';
 import { PrizeComponent } from './prize.component';
 import { CategoryComponent } from './category.component';
+import { UniversitiesComponent } from './universities.component';
+import { AffiliatedComponent } from './affiliated.component';
 
 var routes: any = [
   {
@@ -38,6 +40,14 @@ var routes: any = [
   {
     path: 'prizes/category/:category',
     component: CategoryComponent
+  },
+  {
+    path: 'laureates/universities/top20',
+    component: UniversitiesComponent
+  },
+  {
+    path: 'laureates/universities/:university',
+    component: AffiliatedComponent
   }
 ];
 
@@ -50,7 +60,9 @@ var routes: any = [
     NavComponent,
     PrizesComponent,
     PrizeComponent,
-    CategoryComponent
+    CategoryComponent,
+    UniversitiesComponent,
+    AffiliatedComponent
   ],
   imports: [
     BrowserModule,

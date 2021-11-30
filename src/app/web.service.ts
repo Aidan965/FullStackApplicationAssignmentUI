@@ -39,6 +39,14 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/highly_decorated");
     }
 
+    getMostDecoratedUniversities() {
+        return this.http.get("http://localhost:5000/api/v1/laureates/universities/top20");
+    }
+
+    getLaureatesByAffiliatedUniversity(university: string) {
+        return this.http.get("http://localhost:5000/api/v1/laureates/universities/" + university);
+    }
+
     postPrize(prize: any) {
         console.log(prize);
         console.log(this.laureateID);
