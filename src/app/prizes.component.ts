@@ -16,6 +16,12 @@ export class PrizesComponent {
         this.prizes_list = this.webService.getPrizes(this.page);       
     }
 
+    deletePrize(prizeID: string) {
+        this.webService.deletePrize(prizeID).subscribe((response: any) => {
+            return this.prizes_list = this.webService.getPrizes(this.page);
+        });
+    }
+
     previousPage() {
         if (this.page > 1) {
             this.page = this.page - 1;

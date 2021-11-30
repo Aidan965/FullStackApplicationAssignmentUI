@@ -81,6 +81,14 @@ export class WebService {
         postData.append("bornCity", laureate.bornCity);
         postData.append("gender", laureate.gender);
 
-        return this.http.post("http://localhost:5000/api/v1/laureates" , postData);
+        return this.http.post("http://localhost:5000/api/v1/laureates", postData);
+    }
+
+    deletePrize(id: string) {
+        return this.http.delete("http://localhost:5000/api/v1/prizes/" + id);
+    }
+
+    deleteLaureate(id: string) {
+        return this.http.delete("http://localhost:5000/api/v1/laureates/" + id);
     }
 }

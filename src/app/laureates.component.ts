@@ -36,6 +36,12 @@ export class LaureatesComponent {
                 this.laureates_list = this.webService.getLaureates(this.page);
             });     
     }
+
+    deleteLaureate(laureateID: string) {
+        this.webService.deleteLaureate(laureateID).subscribe((response: any) => {
+            return this.laureates_list = this.webService.getLaureates(this.page);
+        });
+    }
     
     isUntouched() {
         return this.laureateForm.controls.firstname.pristine;
