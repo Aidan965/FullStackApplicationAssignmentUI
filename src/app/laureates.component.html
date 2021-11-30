@@ -25,3 +25,52 @@
         </div>
     </div>
 </div>
+
+<ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Add new Nobel Laureate</h2>
+                <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="born">Born</label>
+                        <input type="text" id="born" name="born" class="form-control" formControlName="born">
+                    </div>
+                    <div class="form-group">
+                        <label for="died">Died</label>
+                        <input type="text" id="died" name="died" class="form-control" formControlName="died">
+                    </div>
+                    <div class="form-group">
+                        <label for="bornCountry">Country</label>
+                        <input type="text" id="bornCountry" name="bornCountry" class="form-control" formControlName="bornCountry">
+                    </div>
+                    <div class="form-group">
+                        <label for="bornCity">City</label>
+                        <input type="text" id="bornCity" name="bornCity" class="form-control" formControlName="bornCity">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" class="form-control" formControlName="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>                 
+                        </select>
+                    </div>
+                    <span *ngIf="isIncomplete()">You must complete all fields</span>
+                    <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loggedOut>
+    <h2>Please login to add a new Nobel laureate</h2>
+</ng-template>

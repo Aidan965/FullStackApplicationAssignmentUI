@@ -52,11 +52,35 @@ export class WebService {
         console.log(this.laureateID);
 
         let postData = new FormData();
+        postData.append("firstname", prize.firstname);
+        postData.append("surname", prize.surname);
         postData.append("year", prize.year);
         postData.append("category", prize.category);
         postData.append("motivation", prize.motivation);
+        postData.append("name", prize.name);
+        postData.append("city", prize.city);
+        postData.append("country", prize.country);
         postData.append("share", prize.share);
 
+        console.log("form data:", postData);
+
         return this.http.post("http://localhost:5000/api/v1/prizes/" + this.laureateID, postData);
+    }
+
+    postLaureate(laureate: any) {
+
+        console.log(laureate);
+
+
+        let postData = new FormData();
+        postData.append("firstname", laureate.firstname);
+        postData.append("surname", laureate.surname);
+        postData.append("born", laureate.born);
+        postData.append("died", laureate.died);
+        postData.append("bornCountry", laureate.bornCountry);
+        postData.append("bornCity", laureate.bornCity);
+        postData.append("gender", laureate.gender);
+
+        return this.http.post("http://localhost:5000/api/v1/laureates" , postData);
     }
 }

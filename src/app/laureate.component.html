@@ -7,8 +7,7 @@
                     <div class="card-header">
                         {{ laureate.firstname }} {{ laureate.surname }} 
                     </div>
-                    <div class="card-body">
-                        
+                    <div class="card-body">                    
                         Born {{ laureate.born.substr(0, 10) | date }} in {{ laureate.bornCity }}, {{ laureate.bornCountry }}. <br>
                         Died {{ laureate.died.substr(0, 10) | date }} in {{ laureate.diedCity}}, {{ laureate.diedCountry }}.
                     </div>
@@ -51,45 +50,66 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Add Nobel prize to laureate</h2>
-                <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="year">Year</label>
-                        <input type="text" id="year" name="year" class="form-control" formControlName="year">
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select id="category" name="category" class="form-control" formControlName="category">
-                            <option value="Chemistry">Chemistry</option>
-                            <option value="Economics">Economics</option>
-                            <option value="Literature">Literature</option>
-                            <option value="Peace">Peace</option>
-                            <option value="Physics">Physics</option>
-                            <option value="Physiology">Physiology or Medicine</option>                       
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="motivation">Enter motivation for awarding prize</label>
-                        <textarea id="motivation" 
-                                rows="3" 
-                                name="motivation" 
-                                class="form-control" 
-                                formControlName="motivation"
-                                [ngClass]="{ 'error' : isInvalid('motivation')}">
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="share">Share (Share of the Nobel prize)</label>
-                        <select id="share" name="share" class="form-control" formControlName="share">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-                    <span *ngIf="isIncomplete()">You must complete all fields</span>
-                    <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <div *ngFor = "let laureate of laureates_list | async">                                 
+                    <h2>Add Nobel prize to laureate</h2>
+                    <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="firstname">Firstname</label>
+                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Surname</label>
+                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="text" id="year" name="year" class="form-control" formControlName="year">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" class="form-control" formControlName="category">
+                                <option value="chemistry">Chemistry</option>
+                                <option value="economics">Economics</option>
+                                <option value="literature">Literature</option>
+                                <option value="peace">Peace</option>
+                                <option value="physics">Physics</option>
+                                <option value="medicine">Physiology or Medicine</option>                       
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="motivation">Enter motivation for awarding prize</label>
+                            <textarea id="motivation" 
+                                    rows="3" 
+                                    name="motivation" 
+                                    class="form-control" 
+                                    formControlName="motivation"
+                                    [ngClass]="{ 'error' : isInvalid('motivation')}">
+                            </textarea>
+                        </div>
+                        <label>Affiliated with</label>
+                        <div class="form-group">                        
+                            <input type="text" id="name" name="name" class="form-control" formControlName="name" placeholder="University/Org Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="city" name="city" class="form-control" formControlName="city" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="country" name="country" class="form-control" formControlName="country" placeholder="Country">
+                        </div>
+                        <div class="form-group">
+                            <label for="share">Share (Share of the Nobel prize)</label>
+                            <select id="share" name="share" class="form-control" formControlName="share">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <span *ngIf="isIncomplete()">You must complete all fields</span>
+                        <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
