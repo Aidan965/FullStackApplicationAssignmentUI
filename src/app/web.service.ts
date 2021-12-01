@@ -47,6 +47,15 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/universities/" + university);
     }
 
+    editLaureate(id: any) {
+
+        let putData = new FormData();
+        
+
+
+        return this.http.put("http://localhost:5000/api/v1/laureates/" + id, putData);
+    }
+
     postPrize(prize: any) {
         console.log(prize);
         console.log(this.laureateID);

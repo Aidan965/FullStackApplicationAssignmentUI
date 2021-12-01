@@ -15,6 +15,8 @@ import { PrizeComponent } from './prize.component';
 import { CategoryComponent } from './category.component';
 import { UniversitiesComponent } from './universities.component';
 import { AffiliatedComponent } from './affiliated.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { A11yModule } from '@angular/cdk/a11y';
 
 var routes: any = [
   {
@@ -72,7 +74,9 @@ var routes: any = [
     AuthModule.forRoot( {
       domain: 'dev-7smlvzj3.eu.auth0.com',
       clientId: 'av1fHbzphSYq0NKXVjVBsuWHpaESogkg'
-    })
+    }),
+    MatGridListModule,
+    A11yModule
   ],
   providers: [WebService],
   bootstrap: [AppComponent]

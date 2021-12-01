@@ -22,6 +22,10 @@ export class LaureateComponent {
             });      
     }
 
+    onEdit() {
+        
+    }
+
     isUntouched() {
         return this.laureateForm.controls.motivation.pristine;
     }

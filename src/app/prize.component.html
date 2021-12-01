@@ -7,9 +7,9 @@
                 </div>
                 <div class="card text-white bg-primary mb-3">
                     
-                    <img src="{{ prize.profileImage }}" height="300" class="card-img-top"/>
+                    
                     <div *ngFor = "let laureate of prize.laureates">
-                        
+                        <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/>
                         <div class="card-body">
                             {{ laureate.firstname }} {{ laureate.surname }} 
                         </div>
