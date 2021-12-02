@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { WebService } from "./web.service";
+import { AuthService } from "@auth0/auth0-angular";
 
 @Component({
     selector: 'prizes',
@@ -7,7 +8,7 @@ import { WebService } from "./web.service";
     styleUrls: ['./prizes.component.css']
 })
 export class PrizesComponent {
-    constructor(public webService: WebService) {}
+    constructor(public webService: WebService, public authService: AuthService) {}
 
     ngOnInit() {
         if (sessionStorage['page']) {

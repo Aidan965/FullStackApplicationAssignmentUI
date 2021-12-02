@@ -1,7 +1,7 @@
-<div class="container" style="margin-top: 70px;">
-    <div class="row">
-        <div class="col-sm-12">
-            <div *ngFor = "let laureate of laureates_list | async">
+<div class="container" style="margin-top: 70px; background-color:rgb(240, 240, 240)">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile *ngFor="let laureate of laureates_list | async">
+            <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
                 <div class="card text-white bg-primary mb-3" 
                             [routerLink]="['/laureates', laureate._id]" 
                             style="cursor: pointer; width: 50rem; margin: auto;">
@@ -12,7 +12,6 @@
                         This laureate was born in {{ laureate.bornCity }}
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+        </mat-grid-tile>
+    </mat-grid-list> 
 </div>

@@ -5,32 +5,17 @@ import { WebService } from "./web.service";
 @Component({
     selector: 'country',
     templateUrl: './country.component.html',
-    styleUrls: ['./country.component.css']
+    styleUrls: []
 })
 export class CountryComponent {
     constructor(public webService: WebService, private route: ActivatedRoute) {}
 
     ngOnInit() {
-        
-        
+
+        this.countries_list = this.webService.getMostDecoratedCountries();
+        console.log(this.countries_list);
     }
 
-    previousPage() {
-        if (this.page > 1) {
-            this.page = this.page - 1;
-            sessionStorage['page'] = this.page;
-            //this.laureates_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
-        }
-    }
-
-    nextPage() {
-        this.page = this.page + 1;
-        sessionStorage['page'] = this.page;
-        //this.laureates_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
-    }
-
-
-
-    laureates_list: any = [];
+    countries_list: any = [];
     page: number = 1;
 }

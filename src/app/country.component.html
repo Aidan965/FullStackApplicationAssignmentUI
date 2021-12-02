@@ -1,0 +1,16 @@
+<table class="table" style="margin-top: 70px;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Nobel laureates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let country of countries_list | async; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><a href="/laureates/countries/{{ country[0] }}"> {{ country[0] }} </a></td>
+        <td>{{ country[1] }}</td>
+      </tr>
+    </tbody>
+</table>

@@ -15,8 +15,13 @@ import { PrizeComponent } from './prize.component';
 import { CategoryComponent } from './category.component';
 import { UniversitiesComponent } from './universities.component';
 import { AffiliatedComponent } from './affiliated.component';
+import { CountryComponent } from './country.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { A11yModule } from '@angular/cdk/a11y';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 var routes: any = [
   {
@@ -50,6 +55,10 @@ var routes: any = [
   {
     path: 'laureates/universities/:university',
     component: AffiliatedComponent
+  },
+  {
+    path: 'laureates/countries/top30',
+    component: CountryComponent
   }
 ];
 
@@ -64,7 +73,8 @@ var routes: any = [
     PrizeComponent,
     CategoryComponent,
     UniversitiesComponent,
-    AffiliatedComponent
+    AffiliatedComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +86,11 @@ var routes: any = [
       clientId: 'av1fHbzphSYq0NKXVjVBsuWHpaESogkg'
     }),
     MatGridListModule,
-    A11yModule
+    A11yModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+    BrowserAnimationsModule
   ],
   providers: [WebService],
   bootstrap: [AppComponent]

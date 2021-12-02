@@ -47,6 +47,10 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/universities/" + university);
     }
 
+    getMostDecoratedCountries() {
+        return this.http.get("http://localhost:5000/api/v1/laureates/countries/top30");
+    }
+
     editLaureate(id: any) {
 
         let putData = new FormData();
