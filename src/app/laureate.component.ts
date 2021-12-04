@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { WebService } from "./web.service";
 import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "@auth0/auth0-angular";
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
     selector: 'laureate',
@@ -11,7 +12,12 @@ import { AuthService } from "@auth0/auth0-angular";
 })
 export class LaureateComponent {
 
-    constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder, public authService: AuthService) {}
+    laureateForm: any;
+    editLaureateForm: any;
+    laureates_list: any = [];
+
+    constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder, public authService: AuthService,
+                private dialog: MatDialog) {}
 
     onSubmit() {
         console.log(this.laureateForm.value);
@@ -22,8 +28,10 @@ export class LaureateComponent {
             });      
     }
 
-    onEdit() {
-        
+    editLaureate() {
+        return this.webService.editLaureate(this.editLaureateForm.value).subscribe((response: any) => {
+            this.laureates_list = this.webService.getLaureate(this.route.snapshot.params["id"]);
+        });
     }
 
     isUntouched() {
@@ -39,7 +47,6 @@ export class LaureateComponent {
     }
 
     ngOnInit() {
-
         this.laureateForm = this.formBuilder.group({
             firstname: '',
             surname: '',
@@ -49,12 +56,17 @@ export class LaureateComponent {
             name: '',
             city: '',
             country: '',
-            share: 1
+            share: 1,
+            image: ''
         })
 
         this.laureates_list = this.webService.getLaureate(this.route.snapshot.params['id']);
-    }
 
-    laureateForm: any;
-    laureates_list: any = [];
+        this.laureates_list.forEach((element: any) => {
+            this.editLaureateForm = this.formBuilder.group({
+                firstname: element[0].firstname,
+                surname: element[0].surname
+            })
+        });
+    }
 }

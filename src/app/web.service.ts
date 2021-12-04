@@ -51,13 +51,14 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/countries/top30");
     }
 
-    editLaureate(id: any) {
+    editLaureate(laureate: any) {
 
         let putData = new FormData();
-        
+        putData.append("firstname", laureate.firstname);
+        putData.append("surname", laureate.surname);
 
 
-        return this.http.put("http://localhost:5000/api/v1/laureates/" + id, putData);
+        return this.http.put("http://localhost:5000/api/v1/laureates/" + this.laureateID, putData);
     }
 
     postPrize(prize: any) {
@@ -74,6 +75,7 @@ export class WebService {
         postData.append("city", prize.city);
         postData.append("country", prize.country);
         postData.append("share", prize.share);
+        postData.append("image", prize.image);
 
         console.log("form data:", postData);
 

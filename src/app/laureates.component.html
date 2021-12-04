@@ -12,9 +12,8 @@
                     <div class="card-body">
                         This laureate was born in {{ laureate.bornCity }}
                     </div>
-                    <button *ngIf="authService.isAuthenticated$ | async; else loggedOutEdit" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)">Delete</button>
-
                 </div>
+                <button *ngIf="authService.isAuthenticated$ | async; else loggedOutEdit" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)">Delete</button>
         </mat-grid-tile>
     </mat-grid-list> 
 

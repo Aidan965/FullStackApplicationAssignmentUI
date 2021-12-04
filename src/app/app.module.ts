@@ -21,6 +21,7 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 var routes: any = [
@@ -74,7 +75,7 @@ var routes: any = [
     CategoryComponent,
     UniversitiesComponent,
     AffiliatedComponent,
-    CountryComponent
+    CountryComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,9 +91,10 @@ var routes: any = [
     MatAutocompleteModule,
     MatFormFieldModule,
     MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [WebService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -13,48 +13,7 @@
           </mat-expansion-panel>       
     </mat-accordion>
 
-    <!-- <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile *ngFor="let laureate of laureates_list | async">
-            <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
-                <div class="card text-white bg-primary mb-3" 
-                            [routerLink]="['/laureates', laureate._id]" 
-                            style="cursor: pointer; width: 50rem; margin: auto;">
-                    <div class="card-header">
-                        {{ laureate.firstname }} {{ laureate.surname }}
-                    </div>
-                    <div class="card-body">
-                        This laureate was born in {{ laureate.bornCity }}
-                    </div>
-                    <button *ngIf="authService.isAuthenticated$ | async; else loggedOutEdit" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)">Delete</button>
-
-                </div>
-        </mat-grid-tile>
-    </mat-grid-list> 
--->
-
-    <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile *ngFor="let prize of prizes_list | async">
-                <div class="card text-white bg-primary mb-3" 
-                            [routerLink]="['/prizes', prize._id]" 
-                            style="cursor: pointer; width: 50rem; margin: auto;">
-                    <div class="card-header">
-                        {{ prize.year }} {{ prize.category }}
-                    </div>
-                    <div *ngFor = "let laureate of prize.laureates">
-                        <div class="card-body">
-                            {{ laureate.firstname }} {{ laureate.surname}}
-                            {{ laureate.motivation }}
-                        </div>
-                        <div class="card-footer">
-                            {{ laureate.share }}
-                        </div>
-                    </div> 
-                    <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deletePrize(prize._id)">Delete</button>
-                </div>
-        </mat-grid-tile>
-    </mat-grid-list> 
-
-    <!-- <div class="row">
+    <div class="row">
         <div class="col-sm-12">
             <div *ngFor = "let prize of prizes_list | async">
                 <div class="card text-white bg-primary mb-3" 
@@ -76,7 +35,7 @@
                 <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deletePrize(prize._id)">Delete</button>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <div class="row">
         <div class="col-sm-6">

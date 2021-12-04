@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 70px;">
+7<div class="container" style="margin-top: 70px;">
     <div class="row">
         <div class="col-sm-3">
             <div *ngFor = "let laureate of laureates_list | async">
@@ -39,13 +39,35 @@
                     </div>
                     <div class="card-footer" *ngIf=" prize.share == 4">
                         <p>Awarded a quarter of the prize</p>
-                    </div>
+                    </div>                    
                 </div>
-                <button type="submit" class="btn btn-warning" (click)="onEdit()">Edit</button>
+            </div>
+        </div>         
+    </div>
+</div>
+
+<ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngFor = "let laureate of laureates_list | async">                                 
+                    <h2>Edit laureate</h2>
+                    <form [formGroup]="editLaureateForm" (ngSubmit)="editLaureate()">
+                        <div class="form-group">
+                            <label for="firstname">Firstname</label>
+                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Surname</label>
+                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-container>
 
 <ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
     <div class="container">
@@ -106,6 +128,10 @@
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="text" id="image" name="image" class="form-control" formControlName="image">
                         </div>
                         <span *ngIf="isIncomplete()">You must complete all fields</span>
                         <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
