@@ -51,6 +51,10 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/countries/top30");
     }
 
+    getLaureatesByCountryCode(countryCode: string) {
+        return this.http.get("http://localhost:5000/api/v1/laureates/countries/" + countryCode);
+    }
+
     editLaureate(laureate: any) {
 
         let putData = new FormData();

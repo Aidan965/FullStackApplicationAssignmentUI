@@ -15,6 +15,7 @@ import { PrizeComponent } from './prize.component';
 import { CategoryComponent } from './category.component';
 import { UniversitiesComponent } from './universities.component';
 import { AffiliatedComponent } from './affiliated.component';
+import { AffiliatedCountryComponent } from './affiliated-country.component';
 import { CountryComponent } from './country.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { A11yModule } from '@angular/cdk/a11y';
@@ -60,6 +61,10 @@ var routes: any = [
   {
     path: 'laureates/countries/top30',
     component: CountryComponent
+  },
+  {
+    path: 'laureates/countries/:countryCode',
+    component: AffiliatedCountryComponent
   }
 ];
 
@@ -76,6 +81,7 @@ var routes: any = [
     UniversitiesComponent,
     AffiliatedComponent,
     CountryComponent,
+    AffiliatedCountryComponent
   ],
   imports: [
     BrowserModule,
