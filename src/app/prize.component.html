@@ -35,6 +35,7 @@
                     </div>
                 </div>
             </div>
+            <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deletePrize(prize._id)">Delete</button>
         </div>
     </div>
 </div>
