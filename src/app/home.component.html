@@ -1,17 +1,14 @@
 <div class="container" style="margin-top: 70px; background-color:rgb(240, 240, 240)">
 
-    <div class="container-fluid p-5 bg-dark text-white text-center">
-        <h1>The Nobel Prize</h1>
-        <blockquote class="blockquote"><p>"For the greatest benefit to humankind"</p></blockquote>
-        <figcaption class="blockquote-footer">
-            Alfred Nobel
-        </figcaption>
-      </div>
+    <div class="container-img">
+        <!-- Sourced from https://www.nobelprize.org/-->
+        <img src="https://www.nobelprize.org/images/54146-hero-tablet-2x.jpg" alt="Alfred Nobel quote" style="width:100%;">
+    </div> 
 
-    <div class="row">
+    <div class="row" style="margin-top: 10px;">
         <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category"><strong>Category</strong></label>
                 <select id="category" name="category" class="form-control" formControlName="category">
                     <option value="chemistry">Chemistry</option>
                     <option value="economics">Economics</option>
@@ -22,7 +19,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="year">Year</label>
+                <label for="year"><strong>Year</strong></label>
                 <input type="text/number" id="year" name="year" class="form-control" formControlName="year">
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 1em;">Submit</button>
