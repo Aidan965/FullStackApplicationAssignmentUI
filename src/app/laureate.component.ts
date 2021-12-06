@@ -47,20 +47,22 @@ export class LaureateComponent {
     }
 
     ngOnInit() {
-        this.laureateForm = this.formBuilder.group({
-            firstname: '',
-            surname: '',
-            year: '',
-            category: 'Peace',
-            motivation: ['', Validators.required],
-            name: '',
-            city: '',
-            country: '',
-            share: 1,
-            image: ''
-        })
-
         this.laureates_list = this.webService.getLaureate(this.route.snapshot.params['id']);
+
+        this.laureates_list.forEach((element: any) => {
+            this.laureateForm = this.formBuilder.group({
+                firstname: element[0].firstname,
+                surname: element[0].surname,
+                year: '',
+                category: 'Peace',
+                motivation: ['', Validators.required],
+                name: '',
+                city: '',
+                country: '',
+                share: 1,
+                image: ''
+            })
+        });
 
         this.laureates_list.forEach((element: any) => {
             this.editLaureateForm = this.formBuilder.group({

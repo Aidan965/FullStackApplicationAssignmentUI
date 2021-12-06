@@ -1,24 +1,26 @@
 <div class="container" style="margin-top: 70px;">
-    <div class="row">
-        <div class="col-sm-12">    
-            
-            <div *ngFor = "let prize of prizes_list | async">         
-                <div class="card text-white bg-primary mb-3" 
-                            [routerLink]="['/prizes', prize._id]" 
-                            style="cursor: pointer; width: 50rem; margin: auto;">
-                    <div class="card-header">
-                        {{ prize.year }} {{ prize.category }}
-                    </div>
-                    <div *ngFor = "let laureate of prize.laureates">
-                        <div class="card-body">
-                            {{ laureate.firstname }} {{ laureate.surname}}
-                            {{ laureate.motivation }}
-                        </div>
-                        <div class="card-footer">
-                            {{ laureate.share }}
-                        </div>
-                    </div>                 
-                </div>
+    <div class="row" style="background-color: rgb(243, 243, 243);">
+        <div class="col-sm-12">
+            <div *ngFor = "let prize of prizes_list | async">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header style="background-color: lightgray;">
+                          <mat-panel-title>
+                            <h3> {{prize.year}} {{prize.category}}</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>  
+                        <div *ngFor = "let laureate of prize.laureates">
+                            <div class="card-body">
+                                <img src="{{ laureate.profileImage }}" style="height: 150px; cursor: pointer;" [routerLink]="['/prizes', prize._id]" /> 
+                                <br>
+                                <strong>{{ laureate.firstname }} {{ laureate.surname}}</strong>
+                                {{ laureate.motivation }}
+                                <hr>
+                            </div>
+                        </div>     
+                      </mat-expansion-panel>       
+                </mat-accordion>
+
             </div>
         </div>
     </div>

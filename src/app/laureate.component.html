@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-3">
             <div *ngFor = "let laureate of laureates_list | async">
-                <div class="card text-white bg-primary mb-3">
+                <div class="card text-black mb-3">
                     <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
                     <div class="card-header">
                         {{ laureate.firstname }} {{ laureate.surname }} 
@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
+<ng-container *ngIf = "authService.isAuthenticated$ | async">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -69,7 +69,7 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
+<ng-container *ngIf = "authService.isAuthenticated$ | async">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -77,12 +77,10 @@
                     <h2>Add Nobel prize to laureate</h2>
                     <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
-                            <label for="firstname">Firstname</label>
-                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname" hidden>
                         </div>
                         <div class="form-group">
-                            <label for="surname">Surname</label>
-                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname" hidden>
                         </div>
                     
                         <div class="form-group">

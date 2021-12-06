@@ -3,7 +3,7 @@
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile *ngFor="let laureate of laureates_list | async">
             <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
-                <div class="card text-white bg-primary mb-3" 
+                <div class="card text-black mb-3" 
                             [routerLink]="['/laureates', laureate._id]" 
                             style="cursor: pointer; width: 50rem; margin: auto;">
                     <div class="card-header">
