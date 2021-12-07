@@ -41,12 +41,12 @@ export class LaureateComponent {
         });
     }
 
-    isUntouched() {
-        return this.laureateForm.controls.motivation.pristine;
+    isIncomplete() {
+        return this.isInvalid('profileImage') || this.isUntouched();
     }
 
-    isIncomplete() {
-        return this.isInvalid('motivation') || this.isUntouched();
+    isUntouched() {
+        return this.laureateForm.controls.profileImage.pristine;
     }
 
     isInvalid(control: any) {
@@ -67,7 +67,7 @@ export class LaureateComponent {
                 city: ['', Validators.required],
                 country: ['', Validators.required],
                 share: 1,
-                image: ''
+                profileImage: ''
             })
         });
 
@@ -75,7 +75,12 @@ export class LaureateComponent {
             this.editLaureateForm = this.formBuilder.group({
                 firstname: [element[0].firstname, Validators.required],
                 surname: [element[0].surname, Validators.required],
-            })    
+                born: [element[0].born, Validators.required],
+                died: [element[0].died, Validators.required],
+                bornCountry: [element[0].bornCountry, Validators.required],
+                bornCountryCode: [element[0].bornCountryCode, Validators.required],
+                profileImage: [element[0].profileImage, Validators.required]
+            });    
         });  
     }
 }

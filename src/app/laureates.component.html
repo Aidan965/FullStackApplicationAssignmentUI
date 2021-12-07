@@ -2,18 +2,17 @@
 
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile *ngFor="let laureate of laureates_list | async">
-            <img src="{{ laureate.profileImage }}" height="300" class="card-img-top"/> 
-                <div class="card text-black mb-3" 
-                            [routerLink]="['/laureates', laureate._id]" 
-                            style="cursor: pointer; width: 50rem; margin: auto;">
+            <img src="{{ laureate.profileImage }}" height="300" class="card-img-top" style="cursor: pointer;" [routerLink]="['/laureates', laureate._id]"/> 
+                <div class="card text-black mb-3" style="width: 50rem; margin: auto;">
                     <div class="card-header">
                         {{ laureate.firstname }} {{ laureate.surname }}
                     </div>
                     <div class="card-body">
                         This laureate was born in {{ laureate.bornCity }}
                     </div>
+                    <div class="card-footer">{{ laureate.bornCountry }}</div>
+                    <button *ngIf="authService.isAuthenticated$ | async; else loggedOutEdit" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)">Delete</button>
                 </div>
-                <button *ngIf="authService.isAuthenticated$ | async; else loggedOutEdit" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)">Delete</button>
         </mat-grid-tile>
     </mat-grid-list> 
 
@@ -54,6 +53,10 @@
                         <input type="text" id="bornCountry" name="bornCountry" class="form-control" formControlName="bornCountry" [ngClass]= "{'error' : isInvalid('bornCountry')}">
                     </div>
                     <div class="form-group">
+                        <label for="bornCountryCode">Country Code</label>
+                        <input type="text" id="bornCountryCode" name="bornCountryCode" class="form-control" formControlname="bornCountryCode" [ngClass]= "{'error' : isInvalid('bornCountryCode')}">
+                    </div>
+                    <div class="form-group">
                         <label for="bornCity">City</label>
                         <input type="text" id="bornCity" name="bornCity" class="form-control" formControlName="bornCity" [ngClass]= "{'error' : isInvalid('bornCity')}">
                     </div>
@@ -63,6 +66,10 @@
                             <option value="male">Male</option>
                             <option value="female">Female</option>                 
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Profile Image</label>
+                        <input type="text" id="profileImage" name="profileImage" class="form-control" formControlName="profileImage" [ngClass]= "{'error' : isInvalid('profileImage')}">
                     </div>
                     <span *ngIf="isIncomplete()">You must complete all fields</span>
                     <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>

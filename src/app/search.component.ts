@@ -23,7 +23,7 @@ export class SearchComponent {
 
         this.route.params.subscribe(params => {          
             this.laureates_list = this.webService.searchLaureate(this.route.snapshot.params['search']);
-        })   
+        });   
     }
 
     onSubmit() {

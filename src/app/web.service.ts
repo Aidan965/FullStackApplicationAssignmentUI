@@ -56,25 +56,23 @@ export class WebService {
     }
 
     searchLaureate(searchTerm: string) {
-
-        console.log("in web service, search term:", searchTerm);
         return this.http.get("http://localhost:5000/api/v1/laureates/search/" + searchTerm);
     }
 
     editLaureate(laureate: any) {
-
         let putData = new FormData();
         putData.append("firstname", laureate.firstname);
         putData.append("surname", laureate.surname);
-
+        putData.append("born", laureate.born);
+        putData.append("died", laureate.died);
+        putData.append("bornCountry", laureate.bornCountry);
+        putData.append("bornCountryCode", laureate.bornCountryCode);
+        putData.append("profileImage", laureate.profileImage);
 
         return this.http.put("http://localhost:5000/api/v1/laureates/" + this.laureateID, putData);
     }
 
     postPrize(prize: any) {
-        console.log(prize);
-        console.log(this.laureateID);
-
         let postData = new FormData();
         postData.append("firstname", prize.firstname);
         postData.append("surname", prize.surname);
@@ -87,24 +85,20 @@ export class WebService {
         postData.append("share", prize.share);
         postData.append("image", prize.image);
 
-        console.log("form data:", postData);
-
         return this.http.post("http://localhost:5000/api/v1/prizes/" + this.laureateID, postData);
     }
 
     postLaureate(laureate: any) {
-
-        console.log(laureate);
-
-
         let postData = new FormData();
         postData.append("firstname", laureate.firstname);
         postData.append("surname", laureate.surname);
         postData.append("born", laureate.born);
         postData.append("died", laureate.died);
         postData.append("bornCountry", laureate.bornCountry);
+        postData.append("bornCountryCode", laureate.bornCountryCode);
         postData.append("bornCity", laureate.bornCity);
         postData.append("gender", laureate.gender);
+        postData.append("profileImage", laureate.profileImage);
 
         return this.http.post("http://localhost:5000/api/v1/laureates", postData);
     }

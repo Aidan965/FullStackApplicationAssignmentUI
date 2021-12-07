@@ -22,8 +22,10 @@ export class LaureatesComponent {
             born: ['', Validators.required],
             died: ['', Validators.required],
             bornCountry: ['', Validators.required],
+            bornCountryCode: ['', Validators.required],
             bornCity: ['', Validators.required],
-            gender: ['', Validators.required]
+            gender: ['', Validators.required],
+            profileImage: ['', Validators.required]
         })
 
         this.laureates_list = this.webService.getLaureates(this.page);       
@@ -44,11 +46,11 @@ export class LaureatesComponent {
     }
     
     isUntouched() {
-        return this.laureateForm.controls.firstname.pristine;
+        return this.laureateForm.controls.profileImage.pristine;
     }
 
     isIncomplete() {
-        return this.isInvalid('firstname') || this.isUntouched();
+        return this.isInvalid('profileImage') || this.isUntouched();
     }
 
     isInvalid(control: any) {
