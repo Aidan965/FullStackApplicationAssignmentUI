@@ -41,6 +41,7 @@
                         <p>Awarded a quarter of the prize</p>
                     </div>                    
                 </div>
+                <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)" style="margin-bottom: 1em;">Delete</button>
             </div>
         </div>         
     </div>
@@ -55,14 +56,14 @@
                     <form [formGroup]="editLaureateForm" (ngSubmit)="editLaureate()">
                         <div class="form-group">
                             <label for="firstname">Firstname</label>
-                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                            <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname" [ngClass]= "{'error' : isInvalid('firstname')}">
                         </div>
                         <div class="form-group">
                             <label for="surname">Surname</label>
-                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                            <input type="text" id="surname" name="surname" class="form-control" formControlName="surname" [ngClass]= "{'error' : isInvalid('surname')}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 1em;">Submit</button>
+                    </form>                
                 </div>
             </div>
         </div>
@@ -85,11 +86,11 @@
                     
                         <div class="form-group">
                             <label for="year">Year</label>
-                            <input type="text" id="year" name="year" class="form-control" formControlName="year">
+                            <input type="text" id="year" name="year" class="form-control" formControlName="year" [ngClass] = "{'error' : isInvalid('year')}">
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select id="category" name="category" class="form-control" formControlName="category">
+                            <select id="category" name="category" class="form-control" formControlName="category" [ngClass] = "{'error' : isInvalid('category')}">
                                 <option value="chemistry">Chemistry</option>
                                 <option value="economics">Economics</option>
                                 <option value="literature">Literature</option>
@@ -110,13 +111,13 @@
                         </div>
                         <label>Affiliated with</label>
                         <div class="form-group">                        
-                            <input type="text" id="name" name="name" class="form-control" formControlName="name" placeholder="University/Org Name">
+                            <input type="text" id="name" name="name" class="form-control" formControlName="name" placeholder="University/Org Name" [ngClass] = "{'error' : isInvalid('name')}">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="city" name="city" class="form-control" formControlName="city" placeholder="City">
+                            <input type="text" id="city" name="city" class="form-control" formControlName="city" placeholder="City" [ngClass] = "{'error' : isInvalid('city')}">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="country" name="country" class="form-control" formControlName="country" placeholder="Country">
+                            <input type="text" id="country" name="country" class="form-control" formControlName="country" placeholder="Country" [ngClass] = "{'error' : isInvalid('country')}">
                         </div>
                         <div class="form-group">
                             <label for="share">Share (Share of the Nobel prize)</label>

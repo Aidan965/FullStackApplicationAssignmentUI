@@ -17,13 +17,13 @@ export class LaureatesComponent {
         }
 
         this.laureateForm = this.formBuilder.group({
-            firstname: '',
-            surname: '',
-            born: '',
-            died: '',
-            bornCountry: '',
-            bornCity: '',
-            gender: ''
+            firstname: ['', Validators.required],
+            surname: ['', Validators.required],
+            born: ['', Validators.required],
+            died: ['', Validators.required],
+            bornCountry: ['', Validators.required],
+            bornCity: ['', Validators.required],
+            gender: ['', Validators.required]
         })
 
         this.laureates_list = this.webService.getLaureates(this.page);       

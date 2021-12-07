@@ -14,18 +14,13 @@ export class HomeComponent {
 
     ngOnInit() {
         this.categoryForm = this.formBuilder.group({
-            year: '2021',
-            category: 'peace'
+            year: '1945',
+            category: 'chemistry'
         })
 
         this.laureates_list = this.webService.getCategoryAndYear(this.categoryForm.value.category, this.categoryForm.value.year);
         
-        // Get random Nobel laureate and display on homescreen
-
-
-        // Get most decorated 
         this.highly_decorated_list = this.webService.getMostDecorated();
-        console.log(this.highly_decorated_list);
     }
 
     onSubmit() {        

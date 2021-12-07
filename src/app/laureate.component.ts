@@ -15,6 +15,7 @@ export class LaureateComponent {
     laureateForm: any;
     editLaureateForm: any;
     laureates_list: any = [];
+    page: any;
 
     constructor(private webService: WebService, private route: ActivatedRoute, private formBuilder: FormBuilder, public authService: AuthService,
                 private dialog: MatDialog) {}
@@ -31,6 +32,12 @@ export class LaureateComponent {
     editLaureate() {
         return this.webService.editLaureate(this.editLaureateForm.value).subscribe((response: any) => {
             this.laureates_list = this.webService.getLaureate(this.route.snapshot.params["id"]);
+        });
+    }
+
+    deleteLaureate(laureateID: string) {
+        this.webService.deleteLaureate(laureateID).subscribe((response: any) => {
+            return this.laureates_list = this.webService.getLaureates(this.page);
         });
     }
 
@@ -53,12 +60,12 @@ export class LaureateComponent {
             this.laureateForm = this.formBuilder.group({
                 firstname: element[0].firstname,
                 surname: element[0].surname,
-                year: '',
+                year: ['', Validators.required],
                 category: 'Peace',
                 motivation: ['', Validators.required],
-                name: '',
-                city: '',
-                country: '',
+                name: ['', Validators.required],
+                city: ['', Validators.required],
+                country: ['', Validators.required],
                 share: 1,
                 image: ''
             })
@@ -66,9 +73,9 @@ export class LaureateComponent {
 
         this.laureates_list.forEach((element: any) => {
             this.editLaureateForm = this.formBuilder.group({
-                firstname: element[0].firstname,
-                surname: element[0].surname
-            })
-        });
+                firstname: [element[0].firstname, Validators.required],
+                surname: [element[0].surname, Validators.required],
+            })    
+        });  
     }
 }

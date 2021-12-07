@@ -35,27 +35,27 @@
                 <form [formGroup]="laureateForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="firstname">Firstname</label>
-                        <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname">
+                        <input type="text" id="firstname" name="firstname" class="form-control" formControlName="firstname" [ngClass]= "{'error' : isInvalid('firstname')}">
                     </div>
                     <div class="form-group">
                         <label for="surname">Surname</label>
-                        <input type="text" id="surname" name="surname" class="form-control" formControlName="surname">
+                        <input type="text" id="surname" name="surname" class="form-control" formControlName="surname" [ngClass]= "{'error' : isInvalid('surname')}">
                     </div>
                     <div class="form-group">
                         <label for="born">Born</label>
-                        <input type="text" id="born" name="born" class="form-control" formControlName="born">
+                        <input type="text" id="born" name="born" class="form-control" formControlName="born" [ngClass]= "{'error' : isInvalid('born')}">
                     </div>
                     <div class="form-group">
                         <label for="died">Died</label>
-                        <input type="text" id="died" name="died" class="form-control" formControlName="died">
+                        <input type="text" id="died" name="died" class="form-control" formControlName="died" [ngClass]= "{'error' : isInvalid('died')}">
                     </div>
                     <div class="form-group">
                         <label for="bornCountry">Country</label>
-                        <input type="text" id="bornCountry" name="bornCountry" class="form-control" formControlName="bornCountry">
+                        <input type="text" id="bornCountry" name="bornCountry" class="form-control" formControlName="bornCountry" [ngClass]= "{'error' : isInvalid('bornCountry')}">
                     </div>
                     <div class="form-group">
                         <label for="bornCity">City</label>
-                        <input type="text" id="bornCity" name="bornCity" class="form-control" formControlName="bornCity">
+                        <input type="text" id="bornCity" name="bornCity" class="form-control" formControlName="bornCity" [ngClass]= "{'error' : isInvalid('bornCity')}">
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>

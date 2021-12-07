@@ -55,6 +55,12 @@ export class WebService {
         return this.http.get("http://localhost:5000/api/v1/laureates/countries/" + countryCode);
     }
 
+    searchLaureate(searchTerm: string) {
+
+        console.log("in web service, search term:", searchTerm);
+        return this.http.get("http://localhost:5000/api/v1/laureates/search/" + searchTerm);
+    }
+
     editLaureate(laureate: any) {
 
         let putData = new FormData();

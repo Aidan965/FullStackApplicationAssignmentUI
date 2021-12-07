@@ -24,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { SearchComponent } from './search.component';
 
 var routes: any = [
   {
@@ -65,6 +66,14 @@ var routes: any = [
   {
     path: 'laureates/countries/:countryCode',
     component: AffiliatedCountryComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
+  },
+  {
+    path: 'laureates/search/:search',
+    component: SearchComponent
   }
 ];
 
@@ -81,7 +90,8 @@ var routes: any = [
     UniversitiesComponent,
     AffiliatedComponent,
     CountryComponent,
-    AffiliatedCountryComponent
+    AffiliatedCountryComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
