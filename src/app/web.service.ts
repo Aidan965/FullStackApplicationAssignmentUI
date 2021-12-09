@@ -83,7 +83,7 @@ export class WebService {
         postData.append("city", prize.city);
         postData.append("country", prize.country);
         postData.append("share", prize.share);
-        postData.append("image", prize.image);
+        postData.append("profileImage", prize.profileImage);
 
         return this.http.post("http://localhost:5000/api/v1/prizes/" + this.laureateID, postData);
     }

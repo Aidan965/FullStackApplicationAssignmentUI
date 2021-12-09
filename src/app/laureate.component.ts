@@ -36,11 +36,9 @@ export class LaureateComponent {
     }
 
     deleteLaureate(laureateID: string) {
-        if (confirm("Are you sure you want to delete this laureate? This action is irreversible.")) {
-            this.webService.deleteLaureate(laureateID).subscribe((response: any) => {
-                return this.laureates_list = this.webService.getLaureates(this.page);
-            });
-        }
+        this.webService.deleteLaureate(laureateID).subscribe((response: any) => {
+            return this.laureates_list = this.webService.getLaureates(this.page);
+        });
     }
 
     isIncomplete() {
