@@ -14,8 +14,8 @@ export class HomeComponent {
 
     ngOnInit() {
         this.categoryForm = this.formBuilder.group({
-            year: '2021',
-            category: 'peace'
+            year: '1950',
+            category: 'physics'
         })
 
         this.laureates_list = this.webService.getCategoryAndYear(this.categoryForm.value.category, this.categoryForm.value.year);

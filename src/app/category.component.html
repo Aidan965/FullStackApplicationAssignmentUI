@@ -49,6 +49,20 @@
             </div> 
         </div>
     </div>
+
+    <nav style="margin-top: 2em;">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" (click)="firstPage()" style="cursor: pointer;">First</a></li>
+            <li class="page-item"><a class="page-link" (click)="previousPage()" style="cursor: pointer;">Previous</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 1)" style="cursor: pointer;">{{page + 1}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 2)" style="cursor: pointer;">{{page + 2}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 3)" style="cursor: pointer;">{{page + 3}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 4)" style="cursor: pointer;">{{page + 4}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 5)" style="cursor: pointer;">{{page + 5}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="nextPage()" style="cursor: pointer;">Next</a></li>
+        </ul>
+    </nav>
+
     <div class="row" style="background-color: rgb(243, 243, 243);">
         <div class="col-sm-12">
             <div *ngFor = "let prize of prizes_list | async">
@@ -72,15 +86,6 @@
                 </mat-accordion>
 
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <button class="btn btn-primary" (click)="previousPage()">Previous</button>
-        </div>
-        <div class="col-sm-6 text-end">
-            <button class="btn btn-primary" (click)="nextPage()">Next</button>
         </div>
     </div>
 </div>

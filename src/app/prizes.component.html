@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 70px;">
     <mat-accordion>
         <mat-expansion-panel>
-            <mat-expansion-panel-header style="background-color: lightgray;">
+            <mat-expansion-panel-header style="background-color: lightblue;">
               <mat-panel-title>
                 Further Information
               </mat-panel-title>
@@ -12,6 +12,20 @@
             </p>      
           </mat-expansion-panel>       
     </mat-accordion>
+
+
+    <nav style="margin-top: 2em;">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" (click)="firstPage()" style="cursor: pointer;">First</a></li>
+            <li class="page-item"><a class="page-link" (click)="previousPage()" style="cursor: pointer;">Previous</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 1)" style="cursor: pointer;">{{page + 1}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 2)" style="cursor: pointer;">{{page + 2}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 3)" style="cursor: pointer;">{{page + 3}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 4)" style="cursor: pointer;">{{page + 4}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="goToPage(page + 5)" style="cursor: pointer;">{{page + 5}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="nextPage()" style="cursor: pointer;">Next</a></li>
+        </ul>
+    </nav>
 
     <div class="row" style="background-color: rgb(243, 243, 243);">
         <div class="col-sm-12">
@@ -34,18 +48,7 @@
                         </div>     
                       </mat-expansion-panel>       
                 </mat-accordion>
-
-                <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deletePrize(prize._id)">Delete</button>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <button class="btn btn-primary" (click)="previousPage()">Previous</button>
-        </div>
-        <div class="col-sm-6 text-end">
-            <button class="btn btn-primary" (click)="nextPage()">Next</button>
         </div>
     </div>
 </div>

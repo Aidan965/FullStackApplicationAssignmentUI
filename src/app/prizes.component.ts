@@ -11,31 +11,38 @@ export class PrizesComponent {
     constructor(public webService: WebService, public authService: AuthService) {}
 
     ngOnInit() {
-        if (sessionStorage['page']) {
-            this.page = Number(sessionStorage['page']);
+        if (sessionStorage['prizes_page']) {
+            this.page = Number(sessionStorage['prizes_page']);
         }
         this.prizes_list = this.webService.getPrizes(this.page);       
-    }
-
-    deletePrize(prizeID: string) {
-        this.webService.deletePrize(prizeID).subscribe((response: any) => {
-            return this.prizes_list = this.webService.getPrizes(this.page);
-        });
     }
 
     previousPage() {
         if (this.page > 1) {
             this.page = this.page - 1;
-            sessionStorage['page'] = this.page;
+            sessionStorage['prizes_page'] = this.page;
             this.prizes_list = this.webService.getPrizes(this.page);
         }
     }
 
     nextPage() {
         this.page = this.page + 1;
-        sessionStorage['page'] = this.page;
+        sessionStorage['prizes_page'] = this.page;
         this.prizes_list = this.webService.getPrizes(this.page);
     }
+
+    goToPage(pageNumber: any) {
+        this.page = pageNumber;
+        sessionStorage['prizes_page'] = this.page;
+        this.prizes_list = this.webService.getPrizes(this.page);
+    }
+
+    firstPage() {
+        this.page = 1;
+        sessionStorage['prizes_page'] = this.page;
+        this.prizes_list = this.webService.getPrizes(this.page);
+    }
+
 
     prizes_list: any = [];
     page: number = 1;

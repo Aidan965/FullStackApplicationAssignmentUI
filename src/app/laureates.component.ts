@@ -42,7 +42,7 @@ export class LaureatesComponent {
     deleteLaureate(laureateID: string) {
         this.webService.deleteLaureate(laureateID).subscribe((response: any) => {
             return this.laureates_list = this.webService.getLaureates(this.page);
-        });
+        });   
     }
     
     isUntouched() {
@@ -67,6 +67,18 @@ export class LaureatesComponent {
 
     nextPage() {
         this.page = this.page + 1;
+        sessionStorage['page'] = this.page;
+        this.laureates_list = this.webService.getLaureates(this.page);
+    }
+
+    goToPage(pageNumber: any) {
+        this.page = pageNumber;
+        sessionStorage['page'] = this.page;
+        this.laureates_list = this.webService.getLaureates(this.page);
+    }
+
+    firstPage() {
+        this.page = 1;
         sessionStorage['page'] = this.page;
         this.laureates_list = this.webService.getLaureates(this.page);
     }

@@ -11,9 +11,7 @@ export class CountryComponent {
     constructor(public webService: WebService, private route: ActivatedRoute) {}
 
     ngOnInit() {
-
         this.countries_list = this.webService.getMostDecoratedCountries();
-        console.log(this.countries_list);
     }
 
     countries_list: any = [];

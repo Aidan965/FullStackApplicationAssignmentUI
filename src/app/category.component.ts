@@ -31,6 +31,18 @@ export class CategoryComponent {
         this.prizes_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
     }
 
+    goToPage(pageNumber: any) {
+        this.page = pageNumber;
+        sessionStorage['page'] = this.page;
+        this.prizes_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
+    }
+
+    firstPage() {
+        this.page = 1;
+        sessionStorage['page'] = this.page;
+        this.prizes_list = this.webService.getCategory(this.route.snapshot.params['category'], this.page);
+    }
+
 
 
     prizes_list: any = [];

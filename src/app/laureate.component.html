@@ -41,7 +41,7 @@
                         <p>Awarded a quarter of the prize</p>
                     </div>                    
                 </div>
-                <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)" style="margin-bottom: 1em;">Delete</button>
+                <button *ngIf="authService.isAuthenticated$ | async" type="submit" class="btn btn-danger" (click)="deleteLaureate(laureate._id)" style="margin-bottom: 1em;">Delete Laureate</button>
             </div>
         </div>         
     </div>
@@ -82,8 +82,7 @@
                             <label for="profileImage">Profile Image</label>
                             <input type="text" id="profileImage" name="profileImage" class="form-control" formControlName="profileImage">
                         </div>
-                        <span *ngIf="isIncomplete()">You must complete all fields</span>
-                        <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>                
                 </div>
             </div>
